@@ -1,0 +1,64 @@
+/* Tablet: 768px и выше */
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+        padding: 0 20px;
+    }
+
+    .telegram-btn {
+        min-width: 220px;
+        font-size: 17px;
+    }
+
+    /* Утилиты для планшетов */
+    .md\:text-left { text-align: left; }
+    .md\:flex-row { flex-direction: row; }
+}
+
+/* Desktop: 1024px и выше */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 960px;
+    }
+
+    .telegram-btn {
+        min-width: 240px;
+        padding: 14px 28px;
+    }
+
+    /* Утилиты для десктопа */
+    .lg\:container-wide { max-width: 1200px; }
+}
+
+/* === Mobile Specific (max-width) === */
+
+/* Маленькие телефоны: до 480px */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 12px;
+    }
+
+    .telegram-btn {
+        min-width: 100%;
+        padding: 14px 20px;
+    }
+
+    .p-20 {
+        padding: 16px;
+    }
+
+    .mb-20 {
+        margin-bottom: 16px;
+    }
+}
+
+/* Планшеты в портретной ориентации: до 768px */
+@media (max-width: 768px) {
+    .hidden-mobile {
+        display: none !important;
+    }
+
+    .mobile\:flex-column {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev Test - Mini App</title>
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/responsive.css">
+    <link rel="stylesheet" href="style/home.css">
+</head>
+<body>
+<div class="mb-20">
+    <div class="container">
+        <section id="user-section" class="p-20 text-center">
+            <h2 class="mb-20">Регистрация / Вход</h2>
+            <button id="authBtn" class="telegram-btn" onclick="simulateAuth()">
+                Войти через Telegram
+            </button>
+            <div id="userInfo" class="mt-20 hidden"></div>
+        </section>
+    </div>
+</div>
+
+<script>
+    // Функция для симуляции Telegram WebApp в браузере
+    function simulateAuth() {
+        const userInfo = document.getElementById('userInfo');
+        userInfo.innerHTML = `
+                <h3>Тестовый пользователь</h3>
+                <p>Имя: Тестовый Пользователь</p>
+                <p>ID: 123456789</p>
+                <p>Статус: Авторизован (тест)</p>
+            `;
+        userInfo.classList.remove('hidden');
+
+        // Симуляция Telegram API для разработки
+        if (!window.Telegram) {
+            window.Telegram = {
+                WebApp: {
+                    expand: () => console.log('App expanded'),
+                    ready: () => console.log('App ready'),
+                    initDataUnsafe: {
+                        user: {
+                            id: 123456789,
+                            first_name: 'Тестовый',
+                            last_name: 'Пользователь',
+                            username: 'test_user'
+                        }
+                    }
+                }
+            };
+        }
+
+        console.log('Telegram WebApp симулирован:', window.Telegram.WebApp);
+    }
+
+    // Автоматически симулируем Telegram при загрузке
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Dev mode: Telegram WebApp доступен через window.Telegram');
+    });
+</script>
+</body>
+</html>
